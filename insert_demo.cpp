@@ -8,19 +8,24 @@ int main(){
 		DBManager db(db_file, true); // true to create the DB
 		db.SetVerbose(1); // prints information about created records
 		
-		ACDC acdc1(33, "33.txt");
+		int acdc1_id = 33;
+		std::string acdc1_pedestals = "33.txt";
+		ACDC acdc1(acdc1_id, acdc1_pedestals);
 		db.CreateACDC(acdc1);
 		if(acdc1.rowid==0){
 			std::cerr<<"error creating ACDC1 entry!"<<std::endl;
 		}
 		
-		ACDC acdc2(37, "37.txt");
+		int acdc2_id = 37;
+		std::string acdc2_pedestals = "37.txt";
+		ACDC acdc2(acdc2_id, acdc2_pedestals);
 		db.CreateACDC(acdc2);
 		if(acdc2.rowid==0){
 			std::cerr<<"error creating ACDC2 entry!"<<std::endl;
 		}
 		
-		LAPPD lappd1(63, acdc1.rowid, acdc2.rowid);
+		int lappd1_id = 63;
+		LAPPD lappd1(lappd1_id, acdc1.rowid, acdc2.rowid);
 		db.CreateLAPPD(lappd1);
 		if(lappd1.rowid==0){
 			std::cerr<<"error creating LAPPD entry!"<<std::endl;
