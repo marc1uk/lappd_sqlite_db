@@ -38,13 +38,14 @@ int main(){
 		double z = 2.58398;
 		int data_id = 2;
 		int slowcontrol_id = 2;
+		int pps_ratio = 5;
 		int acc_id = 0;
 		int acdc1_port1 = 0;
 		int acdc1_port2 = 0;
 		int acdc2_port1 = 0;
 		int acdc2_port2 = 0;
 		
-		Placement placement1(mailbox, layer, x, y, z, lappd1.rowid, data_id, slowcontrol_id, acc_id, acdc1_port1, acdc1_port2, acdc2_port1, acdc2_port2);
+		Placement placement1(mailbox, layer, x, y, z, lappd1.rowid, data_id, slowcontrol_id, pps_ratio, acc_id, acdc1_port1, acdc1_port2, acdc2_port1, acdc2_port2);
 		db.CreatePlacement(placement1);
 		if(placement1.rowid==0){
 			std::cerr<<"error creating Placement entry!"<<std::endl;

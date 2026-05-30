@@ -30,6 +30,7 @@ inline auto makeStorage(const std::string &path) {
 			sqlite_orm::make_column("LAPPD_rowID", &Placement::LAPPD_rowID),
 			sqlite_orm::make_column("Data_ID", &Placement::Data_ID),
 			sqlite_orm::make_column("SC_ID", &Placement::SC_ID),
+			sqlite_orm::make_column("PPS_Ratio", &Placement::PPS_Ratio),
 			sqlite_orm::make_column("ACC_ID", &Placement::ACC_ID),
 			sqlite_orm::make_column("ACDC1_ACCport1", &Placement::ACDC1_ACCport1),
 			sqlite_orm::make_column("ACDC1_ACCport2", &Placement::ACDC1_ACCport2),
@@ -99,7 +100,7 @@ class DBManager {
 	
 	void SetVerbose(int iVerbose);
 	
-	private:
+	//private:
 	int m_verbose=0;
 	Storage storage;
 	

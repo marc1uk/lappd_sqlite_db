@@ -1,0 +1,11 @@
+*.o
+*.d
+*.so
+*.a
+*~
+lib/
+build/
+main
+select_demo
+insert_demo
+imgui.ini

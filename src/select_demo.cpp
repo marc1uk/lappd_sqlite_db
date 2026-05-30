@@ -44,7 +44,8 @@ int main(){
 			         <<" on layer "<<LayerToString(placement.layer)
 			         <<", with position ("<<placement.x<<","<<placement.y<<","<<placement.z<<")"<<std::endl;
 			std::cout<<"The LAPPD was configured with data ID "<<placement.Data_ID
-			         <<" and slow control ID "<<placement.SC_ID<<std::endl;
+			         <<", slow control ID "<<placement.SC_ID
+			         <<" and PPS_Ratio "<<placement.PPS_Ratio<<std::endl;
 			if(!placement.comments.empty()) std::cout<<"additional notes: "<<placement.comments<<std::endl;
 			
 		}

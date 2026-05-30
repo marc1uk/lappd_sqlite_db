@@ -24,6 +24,12 @@ struct ACDC {
 		         <<", pedestals: "<<pedestals
 		         <<", comments: '"<<comments<<"'"<<std::endl;
 	}
+	void clear(){
+		rowid=0;
+		ID=0;
+		pedestals="";
+		comments="";
+	}
 };
 
 struct LAPPD {
@@ -41,6 +47,13 @@ struct LAPPD {
 		         <<", ACDC2 rowid: "<<ACDC2_rowID
 		         <<", comments: '"<<comments<<"'"<<std::endl;
 	}
+	void clear(){
+		rowid=0;
+		INCOM_ID=0;
+		ACDC1_rowID=0;
+		ACDC2_rowID=0;
+		comments="";
+	}
 };
 
 struct Placement {
@@ -53,6 +66,7 @@ struct Placement {
 	int LAPPD_rowID = 0;
 	int Data_ID = 0;
 	int SC_ID = 0;
+	int PPS_Ratio = 0;
 	int ACC_ID = 0;
 	int ACDC1_ACCport1 = 0;
 	int ACDC1_ACCport2 = 0;
@@ -60,7 +74,7 @@ struct Placement {
 	int ACDC2_ACCport2 = 0;
 	std::string comments = "";
 	
-	Placement(int iMailbox, Layer iLayer, double ix, double iy, double iz, int iLAPPDRowID, int iDataID, int iSCID, int iACCID, int iACDC1Port1, int iACDC1Port2, int iACDC2Port1, int iACDC2Port2, std::string iComments="") : mailbox(iMailbox), layer(iLayer), x(ix), y(iy), z(iz), LAPPD_rowID(iLAPPDRowID), Data_ID(iDataID), SC_ID(iSCID), ACC_ID(iACCID), ACDC1_ACCport1(iACDC1Port1), ACDC1_ACCport2(iACDC1Port2), ACDC2_ACCport1(iACDC2Port1), ACDC2_ACCport2(iACDC2Port2), comments(iComments) {};
+	Placement(int iMailbox, Layer iLayer, double ix, double iy, double iz, int iLAPPDRowID, int iDataID, int iSCID, int iPPSRatio, int iACCID, int iACDC1Port1, int iACDC1Port2, int iACDC2Port1, int iACDC2Port2, std::string iComments="") : mailbox(iMailbox), layer(iLayer), x(ix), y(iy), z(iz), LAPPD_rowID(iLAPPDRowID), Data_ID(iDataID), SC_ID(iSCID), PPS_Ratio(iPPSRatio), ACC_ID(iACCID), ACDC1_ACCport1(iACDC1Port1), ACDC1_ACCport2(iACDC1Port2), ACDC2_ACCport1(iACDC2Port1), ACDC2_ACCport2(iACDC2Port2), comments(iComments) {};
 	Placement(){};
 	void Print(){
 		std::cout<<"LAPPD rowid "<<LAPPD_rowID
@@ -69,15 +83,33 @@ struct Placement {
 		         <<", (x,y,z): ("<<x<<","<<y<<","<<z<<")"
 		         <<", LAPPD Data ID: "<<Data_ID
 		         <<", LAPPD Slow Control ID: "<<SC_ID
+		         <<", PPS Ratio: "<<PPS_Ratio
 		         <<", ACC ID: "<<ACC_ID
 		         <<", ports "<<ACDC1_ACCport1<<","<<ACDC1_ACCport2<<","<<ACDC2_ACCport1<<","<<ACDC2_ACCport2
 		         <<", comments: '"<<comments<<"'"<<std::endl;
 	// or std::cout<<db.storage.dump(*this)<<std::endl; // dumps as JSON-like
 	}
+	void clear(){
+		rowid = 0;
+		mailbox = 0;
+		layer;
+		x = 0;
+		y = 0;
+		z = 0;
+		LAPPD_rowID = 0;
+		Data_ID = 0;
+		SC_ID = 0;
+		PPS_Ratio = 0;
+		ACC_ID = 0;
+		ACDC1_ACCport1 = 0;
+		ACDC1_ACCport2 = 0;
+		ACDC2_ACCport1 = 0;
+		ACDC2_ACCport2 = 0;
+		comments = "";
+	}
 };
 
-class RunRange {
-	public:
+struct RunRange {
 	int64_t rowid = 0;
 	int start_run = 0;
 	int end_run = 0;
@@ -126,6 +158,15 @@ class RunRange {
 		return;
 	}
 	
+	void clear(){
+		rowid = 0;
+		start_run = 0;
+		end_run = 0;
+		start_date = "";
+		end_date = "";
+		placements.clear();
+		comments = "";
+	}
 };
 
 #endif
