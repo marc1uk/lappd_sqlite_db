@@ -52,3 +52,9 @@ insert_demo: src/insert_demo.cpp src/DBManager.cpp src/Layer_enum.cpp
 
 select_demo: src/select_demo.cpp src/DBManager.cpp src/Layer_enum.cpp
 	g++ $(CXXFLAGS) $^ -o $@ -I ./include -lsqlite3
+
+clean:
+	rm -rf build/*
+	rm -rf main
+	rm -rf select_demo
+	rm -rf insert_demo
