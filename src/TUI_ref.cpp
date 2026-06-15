@@ -152,6 +152,10 @@ int main() {
 		
 		// text entry
 		{
+		static char str0[128] = "Hello, world!";
+		ImGui::InputText("input text", str0, IM_ARRAYSIZE(str0));
+		ImGui::SameLine(); HelpMarker("USER:\nHold SHIFT or use mouse to select text.\n" "CTRL+Left/Right to word jump.\n" "CTRL+A or double-click to select all.\n" "CTRL+X,CTRL+C,CTRL+V clipboard.\n" "CTRL+Z,CTRL+Y undo/redo.\n" "ESCAPE to revert");
+		
 		// To wire InputText() with std::string or any other custom string type,
 		// see the "Text Input > Resize Callback" section of this demo, and the misc/cpp/imgui_stdlib.h file.
 		static char str1[58] = ""; // default value. Hint is shown when empty.
